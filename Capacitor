@@ -1,0 +1,18 @@
+const int capPin = 32;
+
+void setup() {
+  Serial.begin(115200);
+  analogReadResolution(12);
+  analogSetAttenuation(ADC_11db);
+}
+
+void loop() {
+  int capValue = analogRead(capPin);
+  float voltage = (capValue / 4095.0) * 3.3;
+
+  Serial.print("Capacitor Voltage Reading: ");
+  Serial.print(voltage, 3);
+  Serial.println(" V");
+
+  delay(200);
+}
